@@ -1,0 +1,20 @@
+#Force non-www:
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www\.divisilabs\.com [NC]
+RewriteRule ^(.*)$ https://divisilabs.com/$1 [L,R=301]
+
+Options -MultiViews
+
+<IfModule mod_rewrite.c>
+  #kill fbclid
+  RewriteCond %{QUERY_STRING} ^(.*)&?fbclid=[^&]+&?(.*)$ [NC]
+  RewriteCond %1%2 (^|&)([^&].*|$)
+  RewriteRule ^(.*)$ /$1?%1%2 [R=302,L]
+  #polyphony rewrite
+  RewriteEngine On
+  RewriteBase /
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.php [L,NC,QSA]
+
+</IfModule>
