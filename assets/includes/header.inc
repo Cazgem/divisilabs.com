@@ -75,7 +75,7 @@
         </button>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav text-right ml-auto">
+          <ul class="navbar-nav text-right ml-auto"> 
             <?php
             $host = strtolower(preg_replace('/:\d+$/', '', $_SERVER['HTTP_HOST'] ?? $_SERVER['SERVER_NAME'] ?? ''));
             if ($host === '' || preg_match('/(^|\.)divisilabs\.com$/', $host)) {
